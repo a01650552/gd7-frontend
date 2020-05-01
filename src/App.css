@@ -43,6 +43,7 @@ button.buttonForma{
 
 .topRow {
   margin-top: 30px;
+  overflow: hidden;
 }
 
 .input{
@@ -70,7 +71,8 @@ button.buttonForma{
   border: 1px solid #1724ab !important;
   width: 150px;
   height: 50px;
-  margin-left: auto;
+  float: right;
+  margin-right: 25px;
 }
 
 .buttonForm2{
@@ -79,6 +81,7 @@ button.buttonForma{
   border: 1px solid #1724ab !important;
   width: 150px;
   height: 50px;
+  margin-left: 25px;
 }
 
 .buttonSelected{

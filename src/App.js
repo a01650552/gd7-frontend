@@ -54,8 +54,6 @@ function App() {
     setRangoPrecio(value);
   };
 
-
-
   const [answers, setAnswers] = useState({
     FORMA: formaRes.FORMA,
     CORTE: corteRes.CORTE,
@@ -81,13 +79,17 @@ function App() {
   }
 
   const resetValue = () => {
-    setAnswers({
-      FORMA: undefined,
-      CORTE: undefined,
-      COLOR: undefined,
-      CLARIDAD: undefined,
-      QUILATAJE: [quilataje.minValue,quilataje.maxValue],
-      PRECIO: [precio.minValue,precio.maxValue]
+    setFormaRes({
+      FORMA: undefined
+    })
+    setCorteRes({
+      CORTE: undefined
+    })
+    setColorRes({
+      COLOR: undefined
+    })
+    setClaridadRes({
+      CLARIDAD: undefined
     })
     setRangoQuilataje({
       QUILATAJE: [quilataje.minValue,quilataje.maxValue]
@@ -96,22 +98,19 @@ function App() {
       PRECIO: [precio.minValue,precio.maxValue]
     })
   }
-  useEffect(()=> {
-
-  }, [rangoQuilataje])
 
     return (
       <Container fluid>
         <Row className="topRow">
-            <ButtonFilter props={forma} isForma={true} setAnswer={handleChangeForma}/>
-            <ButtonFilter props={corte} isForma={false} setAnswer={handleChangeCorte}/>
+            <ButtonFilter props={forma} isForma={true} setAnswer={handleChangeForma} isUndefined={formaRes['FORMA'] === undefined ? true : false}/>
+            <ButtonFilter props={corte} isForma={false} setAnswer={handleChangeCorte} isUndefined={corteRes['CORTE'] === undefined ? true : false}/>
         </Row>
         <Row className="topRow"> 
-            <ButtonFilter props={color} isForma={false} setAnswer={handleChangeColor}/>
+            <ButtonFilter props={color} isForma={false} setAnswer={handleChangeColor} isUndefined={colorRes['COLOR'] === undefined ? true : false}/>
             <RangeFilter props={quilataje} values={rangoQuilataje} isQuilataje={true} setAnswer={handleChangeQuilataje}/>
         </Row>
         <Row className="topRow">
-            <ButtonFilter props={claridad} isForma={false} setAnswer={handleChangeClaridad}/>
+            <ButtonFilter props={claridad} isForma={false} setAnswer={handleChangeClaridad} isUndefined={claridadRes['CLARIDAD'] === undefined ? true : false}/>
             <RangeFilter props={precio} values={rangoPrecio} isQuilataje={false} setAnswer={handleChangePrecio}/>
         </Row>
         <Row>
