@@ -37,11 +37,24 @@ const RangeFilter = (props) => {
     };
 
     const handleInputChange0 = (event) => {
-        setValue([event.target.value === '' ? '' : Number(event.target.value), value[1]]);
+      let title = props.props.title;
+      let answer = {
+        [title]: [event.target.value === '' ? '' : Number(event.target.value), value[1]]
+      };
+      if(Number(event.target.value) < props.props.minValue){
+        event.target.value = props.props.minValue
+      }
+        setValue(answer[title]);
+        props.setAnswer(answer)
     };
 
     const handleInputChange1 = (event) => {
       setValue([event.target.value === '' ? '' : value[0],Number(event.target.value)]);
+      let title = props.props.title;
+      let answer = {
+        [title]: [event.target.value === '' ? '' : value[0],Number(event.target.value)]
+      }
+      props.setAnswer(answer)
   };
 
     const handleBlur = () => {
